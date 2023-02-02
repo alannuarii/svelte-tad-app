@@ -40,19 +40,28 @@
 		<div class="camera position-absolute z-1 w-100">
 			<Webcam />
 		</div>
+		<div class="submit position-absolute z-1 w-100 d-flex justify-content-center">
+			<button class="btn btn-success py-2 px-4" type="submit">Check In</button>
+		</div>
 	</form>
 </section>
 
 <style>
+	.container-fluid {
+		margin-bottom: 590px;
+	}
 	h2 {
 		font-weight: 900;
 		margin-bottom: 2px;
 		color: var(--color-theme-1);
 	}
-	.timer{
+	.timer {
 		margin: 35px 0px;
 	}
-	.camera{
+	.camera {
 		margin-top: 90px;
+	}
+	.submit {
+		margin-top: 535px;
 	}
 </style>
