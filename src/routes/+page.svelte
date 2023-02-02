@@ -16,14 +16,14 @@
 	}
 </script>
 
-<section class="container-fluid">
+<section class="container-fluid overflow-x-hidden">
 	<div class="text-center">
 		<h2>PRESENSI TAD</h2>
 		<h5 class="text-dark-emphasis">ULPLTD Kotamobagu</h5>
 	</div>
 	<form>
 		<div class="timer"><Timer /></div>
-		<div class="mb-3">
+		<div class="mb-3 position-absolute z-2 w-100">
 			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label class="form-label">Nama Tenaga Alih Daya</label>
 			<input type="text" class="form-control" placeholder="Masukkan nama" bind:value={searchTerm} />
@@ -37,7 +37,7 @@
 				</ul>
 			{/if}
 		</div>
-		<div>
+		<div class="camera position-absolute z-1 w-100">
 			<Webcam />
 		</div>
 	</form>
@@ -51,5 +51,8 @@
 	}
 	.timer{
 		margin: 35px 0px;
+	}
+	.camera{
+		margin-top: 90px;
 	}
 </style>
