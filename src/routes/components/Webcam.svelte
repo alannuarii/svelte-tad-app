@@ -47,9 +47,9 @@
 		getWebcam();
 	});
 
-	onDestroy(() => {
-		stopWebcam();
-	});
+	// onDestroy(() => {
+	// 	stopWebcam();
+	// });
 </script>
 
 <div class="d-flex flex-column align-items-center border p-3 rounded-2">

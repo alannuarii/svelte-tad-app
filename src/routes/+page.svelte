@@ -1,5 +1,6 @@
 <script>
 	import { tad } from '../lib/js/nama';
+	import Webcam from './components/Webcam.svelte';
 
 	let searchTerm = '';
 
@@ -15,7 +16,7 @@
 </script>
 
 <section class="container-fluid">
-	<form method="POST">
+	<form>
 		<div>
 			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label class="form-label">Nama</label>
@@ -29,6 +30,9 @@
 					{/each}
 				</ul>
 			{/if}
+		</div>
+		<div>
+			<Webcam />
 		</div>
 	</form>
 </section>
