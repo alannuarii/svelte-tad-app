@@ -17,9 +17,9 @@
 
 <section class="container-fluid">
 	<form>
-		<div>
+		<div class="mb-3">
 			<!-- svelte-ignore a11y-label-has-associated-control -->
-			<label class="form-label">Nama</label>
+			<label class="form-label">Nama Tenaga Alih Daya</label>
 			<input type="text" class="form-control" placeholder="Masukkan nama" bind:value={searchTerm} />
 
 			{#if searchTerm && filteredData.length}
