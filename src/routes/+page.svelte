@@ -18,14 +18,14 @@
 
 <section class="container-fluid">
 	<div class="text-center">
-		<h2>PRESENSI TAD</h2>
+		<h1>PRESENSI TAD</h1>
 		<h5 class="text-dark-emphasis">ULPLTD Kotamobagu</h5>
 	</div>
 	<form class="position-relative">
 		<div class="timer"><Timer /></div>
 		<div class="name mb-3 position-absolute z-2 w-100">
 			<!-- svelte-ignore a11y-label-has-associated-control -->
-			<label class="form-label">Nama Tenaga Alih Daya</label>
+			<label class="form-label text-dark-emphasis">Nama Tenaga Alih Daya</label>
 			<input type="text" class="form-control" placeholder="Masukkan nama" bind:value={searchTerm} />
 
 			{#if searchTerm && filteredData.length}
@@ -51,7 +51,7 @@
 		margin-bottom: 590px;
 		border: 1px solid transparent;
 	}
-	h2 {
+	h1 {
 		font-weight: 900;
 		margin-bottom: 2px;
 		color: var(--color-theme-1);

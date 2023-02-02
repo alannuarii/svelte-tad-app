@@ -19,7 +19,7 @@
 </script>
 
 <div class="text-center">
-    <h5 class="mb-4">{date(today)}</h5>
+    <h5 class="mb-4 text-dark-emphasis">{date(today)}</h5>
 	<span class="px-4 py-3 text-center rounded-4 bg-success-subtle text-success"
 		><i class="bi-clock me-1" /> {time}</span
 	>
