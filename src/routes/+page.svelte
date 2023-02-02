@@ -1,6 +1,7 @@
 <script>
 	import { tad } from '../lib/js/nama';
 	import Webcam from './components/Webcam.svelte';
+	import Timer from './components/Timer.svelte';
 
 	let searchTerm = '';
 
@@ -16,7 +17,12 @@
 </script>
 
 <section class="container-fluid">
+	<div class="text-center">
+		<h2>PRESENSI TAD</h2>
+		<h5 class="text-dark-emphasis">ULPLTD Kotamobagu</h5>
+	</div>
 	<form>
+		<div class="timer"><Timer /></div>
 		<div class="mb-3">
 			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label class="form-label">Nama Tenaga Alih Daya</label>
@@ -36,3 +42,14 @@
 		</div>
 	</form>
 </section>
+
+<style>
+	h2 {
+		font-weight: 900;
+		margin-bottom: 2px;
+		color: var(--color-theme-1);
+	}
+	.timer{
+		margin: 35px 0px;
+	}
+</style>
