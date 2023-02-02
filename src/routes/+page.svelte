@@ -49,6 +49,7 @@
 <style>
 	.container-fluid {
 		margin-bottom: 590px;
+		border: 1px solid transparent;
 	}
 	h2 {
 		font-weight: 900;
