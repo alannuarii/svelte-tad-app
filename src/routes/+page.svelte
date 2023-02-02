@@ -16,14 +16,14 @@
 	}
 </script>
 
-<section class="container-fluid overflow-x-hidden">
+<section class="container-fluid">
 	<div class="text-center">
 		<h2>PRESENSI TAD</h2>
 		<h5 class="text-dark-emphasis">ULPLTD Kotamobagu</h5>
 	</div>
-	<form>
+	<form class="position-relative">
 		<div class="timer"><Timer /></div>
-		<div class="mb-3 position-absolute z-2 w-100">
+		<div class="name mb-3 position-absolute z-2 w-100">
 			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label class="form-label">Nama Tenaga Alih Daya</label>
 			<input type="text" class="form-control" placeholder="Masukkan nama" bind:value={searchTerm} />
