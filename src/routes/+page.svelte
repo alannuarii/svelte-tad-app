@@ -2,8 +2,11 @@
 	import { tad } from '../lib/js/nama';
 	import Webcam from './components/Webcam.svelte';
 	import Timer from './components/Timer.svelte';
+	import { onMount } from 'svelte';
 
 	let searchTerm = '';
+	let lat = '';
+	let lng = '';
 
 	$: filteredData = searchTerm
 		? tad.filter((item) => item.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -14,12 +17,24 @@
 		await new Promise((resolve) => setTimeout(resolve, 0));
 		filteredData = [];
 	}
+
+	function location() {
+		navigator.geolocation.getCurrentPosition(function (position) {
+			lat = position.coords.latitude;
+			lng = position.coords.longitude;
+		});
+	}
+
+	onMount(() => {
+		location();
+	});
 </script>
 
 <section class="container-fluid">
 	<div class="text-center">
 		<h1>PRESENSI TAD</h1>
 		<h5 class="text-dark-emphasis">ULPLTD Kotamobagu</h5>
+		<h6>Lokasi:{lat}, {lng}</h6>
 	</div>
 	<form class="position-relative">
 		<div class="timer"><Timer /></div>
