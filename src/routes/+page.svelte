@@ -32,7 +32,7 @@
 	const userLocation = { latitude: lat, longitude: lng };
 
 	// Informasi titik referensi
-	const referencePoint = { latitude: 0.7401359, longitude: 124.3199208 };
+	const referencePoint = { latitude: 0.7471271, longitude: 124.3209833 };
 
 	// Radius yang ditentukan, dalam meter
 	const radius = 1000;
