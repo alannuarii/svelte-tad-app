@@ -9,6 +9,7 @@
 	let lat = '';
 	let lng = '';
 	let message = '';
+	let distance = '';
 
 	$: filteredData = searchTerm
 		? tad.filter((item) => item.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -31,13 +32,13 @@
 	const userLocation = { latitude: lat, longitude: lng };
 
 	// Informasi titik referensi
-	const referencePoint = { latitude: 0.7473751, longitude: 124.3208893 };
+	const referencePoint = { latitude: 0.7401359, longitude: 124.3199208 };
 
 	// Radius yang ditentukan, dalam meter
 	const radius = 1000;
 
 	// Menghitung jarak antara posisi pengguna dan titik referensi
-	const distance = getDistance(userLocation, referencePoint);
+	distance = getDistance(userLocation, referencePoint);
 
 	// Memeriksa apakah jarak berada dalam radius yang ditentukan
 	if (distance <= radius) {
@@ -56,6 +57,7 @@
 		<h1>PRESENSI TAD</h1>
 		<h5 class="text-dark-emphasis">ULPLTD Kotamobagu</h5>
 		<h6>Lokasi:{lat}, {lng}</h6>
+		<h6>{distance}</h6>
 		<h6>{message}</h6>
 	</div>
 	<form class="position-relative">
