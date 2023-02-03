@@ -1,0 +1,24 @@
+<nav class="navbar d-flex justify-content-center align-items-center">
+	<div class="text-center">
+		<h5 class="mb-1 text-dark-emphasis">PT Nusantara Power</h5>
+		<h6>ULPLTD Kotamobagu</h6>
+	</div>
+</nav>
+
+<style>
+	.navbar {
+		background-color: var(--color-theme-1);
+		height: 70px;
+		margin-bottom: -15px;
+		border-top: 7px solid var(--color-theme-2);
+	}
+	h5 {
+		font-size: 17px;
+		margin-bottom: -2px;
+	}
+	h6 {
+		font-size: 16px;
+		font-weight: 300;
+		margin-bottom: -2px;
+	}
+</style>

@@ -1,6 +1,7 @@
 <script>
 	import '../lib/css/styles.css';
 	import Header from './components/Header.svelte';
+
 </script>
 
 <div id="master" class="bg-light">
@@ -8,6 +9,7 @@
 	<main class="py-3">
 		<slot />
 	</main>
+
 </div>
 
 <style>

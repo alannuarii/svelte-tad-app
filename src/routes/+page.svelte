@@ -2,6 +2,7 @@
 	import { tad } from '../lib/js/nama';
 	import Webcam from './components/Webcam.svelte';
 	import Timer from './components/Timer.svelte';
+	import Bottom from './components/Bottom.svelte';
 	import { onMount } from 'svelte';
 	import { getDistance } from 'geolib';
 
@@ -58,9 +59,6 @@
 	<form class="position-relative">
 		<div class="timer"><Timer /></div>
 		<div class="name position-absolute z-2 w-100">
-			<!-- svelte-ignore a11y-label-has-associated-control -->
-			<!-- <label class="form-label text-dark-emphasis">Nama Tenaga Alih Daya</label>
-			<input type="text" class="form-control" placeholder="Masukkan nama"  /> -->
 			<div class="form-floating">
 				<input
 					type="text"
@@ -89,10 +87,11 @@
 		</div>
 	</form>
 </section>
+<Bottom />
 
 <style>
 	.container-fluid {
-		margin-bottom: 580px;
+		margin-bottom: 600px;
 		border: 1px solid transparent;
 	}
 	h1 {
