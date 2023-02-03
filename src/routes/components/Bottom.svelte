@@ -9,7 +9,7 @@
 	.navbar {
 		background-color: var(--color-theme-1);
 		height: 70px;
-		margin-bottom: -15px;
+		margin-bottom: -16px;
 		border-top: 7px solid var(--color-theme-2);
 	}
 	h5 {
