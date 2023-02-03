@@ -3,7 +3,7 @@
 	import Webcam from './components/Webcam.svelte';
 	import Timer from './components/Timer.svelte';
 	import { onMount } from 'svelte';
-	import geolib from 'geolib';
+	import { getDistance } from 'geolib';
 
 	let searchTerm = '';
 	let lat = '';
@@ -37,7 +37,7 @@
 	const radius = 1000;
 
 	// Menghitung jarak antara posisi pengguna dan titik referensi
-	const distance = geolib.getDistance(userLocation, referencePoint);
+	const distance = getDistance(userLocation, referencePoint);
 
 	// Memeriksa apakah jarak berada dalam radius yang ditentukan
 	if (distance <= radius) {
