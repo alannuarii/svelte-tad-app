@@ -6,10 +6,6 @@
 	import { getDistance } from 'geolib';
 
 	let searchTerm = '';
-	let lat = '';
-	let lng = '';
-	let message = '';
-	let distance = '';
 
 	$: filteredData = searchTerm
 		? tad.filter((item) => item.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -21,30 +17,31 @@
 		filteredData = [];
 	}
 
+	let userLocation = {};
+	let targetLocation = { latitude: 0.7471202, longitude: 124.3209866 };
+	let radius = 100;
+
+	let message = '';
+
 	function location() {
-		navigator.geolocation.getCurrentPosition(function (position) {
-			lat = position.coords.latitude;
-			lng = position.coords.longitude;
-		});
-	}
+		navigator.geolocation.watchPosition(
+			(position) => {
+				userLocation = {
+					latitude: position.coords.latitude,
+					longitude: position.coords.longitude
+				};
 
-	// Informasi posisi pengguna
-	const userLocation = { latitude: lat, longitude: lng };
-
-	// Informasi titik referensi
-	const referencePoint = { latitude: 0.7471271, longitude: 124.3209833 };
-
-	// Radius yang ditentukan, dalam meter
-	const radius = 1000;
-
-	// Menghitung jarak antara posisi pengguna dan titik referensi
-	distance = getDistance(userLocation, referencePoint);
-
-	// Memeriksa apakah jarak berada dalam radius yang ditentukan
-	if (distance <= radius) {
-		message = 'Pengguna berada dalam radius yang ditentukan';
-	} else {
-		message = 'Pengguna tidak berada dalam radius yang ditentukan';
+				let distance = getDistance(userLocation, targetLocation);
+				if (distance <= radius) {
+					message = 'Anda berada di area PLTD Kotamobagu';
+				} else {
+					message = 'Anda berada di luar area PLTD Kotamobagu';
+				}
+			},
+			(error) => {
+				console.error(error);
+			}
+		);
 	}
 
 	onMount(() => {
@@ -56,8 +53,6 @@
 	<div class="text-center">
 		<h1>PRESENSI TAD</h1>
 		<h5 class="text-dark-emphasis">ULPLTD Kotamobagu</h5>
-		<h6>Lokasi:{lat}, {lng}</h6>
-		<h6>{distance}</h6>
 		<h6>{message}</h6>
 	</div>
 	<form class="position-relative">
