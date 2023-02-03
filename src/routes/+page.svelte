@@ -6,9 +6,9 @@
 	import { getDistance } from 'geolib';
 
 	let searchTerm = '';
-	$: lat = '';
-	$: lng = '';
-	$: message = '';
+	let lat = '';
+	let lng = '';
+	let message = '';
 
 	$: filteredData = searchTerm
 		? tad.filter((item) => item.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -28,7 +28,7 @@
 	}
 
 	// Informasi posisi pengguna
-	$: userLocation = { latitude: lat, longitude: lng };
+	const userLocation = { latitude: lat, longitude: lng };
 
 	// Informasi titik referensi
 	const referencePoint = { latitude: 0.7473751, longitude: 124.3208893 };
@@ -37,7 +37,7 @@
 	const radius = 1000;
 
 	// Menghitung jarak antara posisi pengguna dan titik referensi
-	$: distance = getDistance(userLocation, referencePoint);
+	const distance = getDistance(userLocation, referencePoint);
 
 	// Memeriksa apakah jarak berada dalam radius yang ditentukan
 	if (distance <= radius) {
