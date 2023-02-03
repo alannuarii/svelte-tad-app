@@ -1,6 +1,6 @@
 <nav class="navbar d-flex justify-content-center align-items-center">
 	<div class="text-center">
-		<h5 class="mb-1 text-dark-emphasis">PT Nusantara Power</h5>
+		<h5 class="mb-1 text-dark-emphasis">PT PLN Nusantara Power</h5>
 		<h6 class="text-light">ULPLTD Kotamobagu</h6>
 	</div>
 </nav>
