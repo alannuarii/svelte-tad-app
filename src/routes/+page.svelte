@@ -83,7 +83,7 @@
 			<Webcam />
 		</div>
 		<div class="submit position-absolute z-1 w-100 d-flex justify-content-center">
-			<button class="btn btn-success py-2 px-4" type="submit">Check In</button>
+			<button class="btn btn-success py-3 px-5 rounded-pill" type="submit">Check In</button>
 		</div>
 	</form>
 </section>
@@ -91,7 +91,7 @@
 
 <style>
 	.container-fluid {
-		margin-bottom: 600px;
+		margin-bottom: 610px;
 		border: 1px solid transparent;
 	}
 	h1 {
@@ -107,5 +107,9 @@
 	}
 	.submit {
 		margin-top: 525px;
+	}
+	button{
+		font-size: 18px;
+		font-weight: 700;
 	}
 </style>
