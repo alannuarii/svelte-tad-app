@@ -23,10 +23,20 @@
 	</div>
 	<form class="position-relative">
 		<div class="timer"><Timer /></div>
-		<div class="name mb-3 position-absolute z-2 w-100">
+		<div class="name position-absolute z-2 w-100">
 			<!-- svelte-ignore a11y-label-has-associated-control -->
-			<label class="form-label text-dark-emphasis">Nama Tenaga Alih Daya</label>
-			<input type="text" class="form-control" placeholder="Masukkan nama" bind:value={searchTerm} />
+			<!-- <label class="form-label text-dark-emphasis">Nama Tenaga Alih Daya</label>
+			<input type="text" class="form-control" placeholder="Masukkan nama"  /> -->
+			<div class="form-floating">
+				<input
+					type="text"
+					class="form-control"
+					id="floatingInput"
+					placeholder="example"
+					bind:value={searchTerm}
+				/>
+				<label for="floatingInput">Nama Tenaga Alih Daya</label>
+			</div>
 
 			{#if searchTerm && filteredData.length}
 				<ul class="list-group">
@@ -48,7 +58,7 @@
 
 <style>
 	.container-fluid {
-		margin-bottom: 590px;
+		margin-bottom: 580px;
 		border: 1px solid transparent;
 	}
 	h1 {
@@ -60,9 +70,9 @@
 		margin: 35px 0px;
 	}
 	.camera {
-		margin-top: 90px;
+		margin-top: 80px;
 	}
 	.submit {
-		margin-top: 535px;
+		margin-top: 525px;
 	}
 </style>
