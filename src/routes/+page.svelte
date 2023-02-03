@@ -3,10 +3,12 @@
 	import Webcam from './components/Webcam.svelte';
 	import Timer from './components/Timer.svelte';
 	import { onMount } from 'svelte';
+	import geolib from 'geolib';
 
 	let searchTerm = '';
 	let lat = '';
 	let lng = '';
+	let message = '';
 
 	$: filteredData = searchTerm
 		? tad.filter((item) => item.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -25,6 +27,25 @@
 		});
 	}
 
+	// Informasi posisi pengguna
+	const userLocation = { latitude: lat, longitude: lng };
+
+	// Informasi titik referensi
+	const referencePoint = { latitude: 0.7473751, longitude: 124.3208893 };
+
+	// Radius yang ditentukan, dalam meter
+	const radius = 1000;
+
+	// Menghitung jarak antara posisi pengguna dan titik referensi
+	const distance = geolib.getDistance(userLocation, referencePoint);
+
+	// Memeriksa apakah jarak berada dalam radius yang ditentukan
+	if (distance <= radius) {
+		message = 'Pengguna berada dalam radius yang ditentukan';
+	} else {
+		message = 'Pengguna tidak berada dalam radius yang ditentukan';
+	}
+
 	onMount(() => {
 		location();
 	});
@@ -35,6 +56,7 @@
 		<h1>PRESENSI TAD</h1>
 		<h5 class="text-dark-emphasis">ULPLTD Kotamobagu</h5>
 		<h6>Lokasi:{lat}, {lng}</h6>
+		<h6>{message}</h6>
 	</div>
 	<form class="position-relative">
 		<div class="timer"><Timer /></div>
