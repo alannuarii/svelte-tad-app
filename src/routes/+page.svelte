@@ -8,8 +8,6 @@
 
 	let searchTerm = '';
 	let checkMessage = '';
-	let checkValidation = false;
-	let checkName = searchTerm === '' ? '' : searchTerm;
 
 	$: filteredData = searchTerm
 		? tad.filter((item) => item.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -20,16 +18,6 @@
 		await new Promise((resolve) => setTimeout(resolve, 0));
 		filteredData = [];
 	}
-
-	const inputName = (event) => {
-		checkName = event.target.value;
-	};
-
-	const validation = () => {
-		if (checkMessage === 'Anda berada di area PLTD Kotamobagu' && tad.includes(checkName)) {
-			checkValidation = true;
-		}
-	};
 
 	let lat = '';
 	let lng = '';
@@ -63,7 +51,6 @@
 					placeholder="example"
 					name="nama"
 					bind:value={searchTerm}
-					on:change={inputName}
 				/>
 				<label for="floatingInput">Nama Tenaga Alih Daya</label>
 			</div>
@@ -86,7 +73,7 @@
 					? 'btn btn-secondary py-3 px-5 rounded-pill'
 					: 'btn btn-success py-3 px-5 rounded-pill'}
 				type="submit"
-				disabled={!validation}
+				disabled={checkMessage === 'Anda berada di luar area PLTD Kotamobagu' ? true : false}
 				>Check In</button
 			>
 		</div>
