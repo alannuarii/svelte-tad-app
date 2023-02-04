@@ -2,10 +2,10 @@
 	import { onMount, onDestroy } from 'svelte';
 	let mediaStream;
 	let videoEl;
-	let hiddenInput;
 	let resetBtn = false;
 	let takeSnapshotBtn = true;
 	let isCanvasOn = false;
+	let hiddenInput;
 
 	async function getWebcam() {
 		mediaStream = await navigator.mediaDevices.getUserMedia({ video: true });
@@ -62,7 +62,7 @@
 			height="320"
 			class="position-absolute top-50 start-50 translate-middle"
 		/>
-		<input type="hidden" bind:this={hiddenInput} />
+		<input type="hidden" name="foto" bind:this={hiddenInput} />
 		<!-- svelte-ignore a11y-missing-attribute -->
 	</div>
 	<div class="box position-relative">

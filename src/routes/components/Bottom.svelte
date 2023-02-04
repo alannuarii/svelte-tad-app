@@ -8,16 +8,16 @@
 <style>
 	.navbar {
 		background-color: var(--color-theme-1);
-		height: 70px;
+		height: 80px;
 		margin-bottom: -16px;
 		border-top: 7px solid var(--color-theme-2);
 	}
 	h5 {
-		font-size: 17px;
+		font-size: 15px;
 		margin-bottom: -2px;
 	}
 	h6 {
-		font-size: 16px;
+		font-size: 14px;
 		font-weight: 300;
 		margin-bottom: -2px;
 	}

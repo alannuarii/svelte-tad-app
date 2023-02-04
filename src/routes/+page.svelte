@@ -1,12 +1,12 @@
 <script>
-	import { tad } from '../lib/js/nama';
 	import Webcam from './components/Webcam.svelte';
 	import Timer from './components/Timer.svelte';
 	import Bottom from './components/Bottom.svelte';
-	import { onMount } from 'svelte';
-	import { getDistance } from 'geolib';
+	import { tad } from '../lib/js/nama';
+	import Geolocation from './components/Geolocation.svelte';
 
 	let searchTerm = '';
+	let checkMessage = '';
 
 	$: filteredData = searchTerm
 		? tad.filter((item) => item.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -17,46 +17,15 @@
 		await new Promise((resolve) => setTimeout(resolve, 0));
 		filteredData = [];
 	}
-
-	let userLocation = {};
-	let targetLocation = { latitude: 0.7471202, longitude: 124.3209866 };
-	let radius = 10;
-
-	let message = '';
-
-	function location() {
-		navigator.geolocation.watchPosition(
-			(position) => {
-				userLocation = {
-					latitude: position.coords.latitude,
-					longitude: position.coords.longitude
-				};
-
-				let distance = getDistance(userLocation, targetLocation);
-				if (distance <= radius) {
-					message = 'Anda berada di area PLTD Kotamobagu';
-				} else {
-					message = 'Anda berada di luar area PLTD Kotamobagu';
-				}
-			},
-			(error) => {
-				console.error(error);
-			}
-		);
-	}
-
-	onMount(() => {
-		location();
-	});
 </script>
 
 <section class="container-fluid">
 	<div class="text-center">
 		<h1>PRESENSI TAD</h1>
 		<h5 class="text-dark-emphasis">ULPLTD Kotamobagu</h5>
-		<h6>{message}</h6>
+		<Geolocation bind:message={checkMessage} />
 	</div>
-	<form class="position-relative">
+	<form class="position-relative" method="POST">
 		<div class="timer"><Timer /></div>
 		<div class="name position-absolute z-2 w-100">
 			<div class="form-floating">
@@ -65,6 +34,7 @@
 					class="form-control"
 					id="floatingInput"
 					placeholder="example"
+					name="nama"
 					bind:value={searchTerm}
 				/>
 				<label for="floatingInput">Nama Tenaga Alih Daya</label>
@@ -83,7 +53,12 @@
 			<Webcam />
 		</div>
 		<div class="submit position-absolute z-1 w-100 d-flex justify-content-center">
-			<button class="btn btn-success py-3 px-5 rounded-pill" type="submit">Check In</button>
+			<button
+				class="btn btn-success py-3 px-5 rounded-pill"
+				type="submit"
+				disabled={checkMessage === 'Anda berada di luar area PLTD Kotamobagu' ? true : false}
+				>Check In</button
+			>
 		</div>
 	</form>
 </section>
@@ -108,7 +83,7 @@
 	.submit {
 		margin-top: 525px;
 	}
-	button{
+	button {
 		font-size: 18px;
 		font-weight: 700;
 	}

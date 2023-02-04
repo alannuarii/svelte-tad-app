@@ -1,8 +1,8 @@
 <script>
-	import { date } from '../../lib/js/datetime';
+	import { date, waktu } from '../../lib/js/datetime';
 
 	let time = '00:00:00';
-    let today = new Date().toISOString().slice(0, 10);
+	let today = new Date().toISOString().slice(0, 10);
 
 	setInterval(() => {
 		let date = new Date();
@@ -19,10 +19,11 @@
 </script>
 
 <div class="text-center">
-    <h5 class="mb-4 text-dark-emphasis">{date(today)}</h5>
+	<h5 class="mb-4 text-dark-emphasis">{date(today)}</h5>
 	<span class="px-4 py-3 text-center rounded-4 bg-success-subtle text-success"
 		><i class="bi-clock me-1" /> {time}</span
 	>
+	<input type="hidden" name="waktu" value={waktu(time)} />
 </div>
 
 <style>
