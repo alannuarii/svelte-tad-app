@@ -8,11 +8,6 @@
 
 	let searchTerm = '';
 	let checkMessage = '';
-	let namaInput = '';
-
-	const checkNama = (event) => {
-		namaInput = event.target.value;
-	};
 
 	$: filteredData = searchTerm
 		? tad.filter((item) => item.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -20,7 +15,6 @@
 
 	async function selectItem(item) {
 		searchTerm = item;
-		namaInput = item;
 		await new Promise((resolve) => setTimeout(resolve, 0));
 		filteredData = [];
 	}
@@ -49,10 +43,6 @@
 	<form class="position-relative" method="POST">
 		<div class="timer"><Timer /></div>
 		<div class="name position-absolute z-2 w-100">
-			<!-- svelte-ignore empty-block -->
-			{#if tad.includes(namaInput)}{:else if namaInput === ''}{:else}
-				<p class="text-danger">Nama tidak terdaftar!</p>
-			{/if}
 			<div class="form-floating">
 				<input
 					type="text"
@@ -61,7 +51,6 @@
 					placeholder="example"
 					name="nama"
 					bind:value={searchTerm}
-					on:change={checkNama}
 				/>
 				<label for="floatingInput">Nama Tenaga Alih Daya</label>
 			</div>
@@ -94,7 +83,7 @@
 
 <style>
 	.container-fluid {
-		margin-bottom: 620px;
+		margin-bottom: 600px;
 		border: 1px solid transparent;
 	}
 	h1 {
@@ -106,16 +95,13 @@
 		margin: 35px 0px;
 	}
 	.camera {
-		margin-top: 95px;
+		margin-top: 70px;
 	}
 	.submit {
-		margin-top: 535px;
+		margin-top: 515px;
 	}
 	button {
 		font-size: 18px;
 		font-weight: 700;
-	}
-	p {
-		margin-bottom: 2px;
 	}
 </style>
