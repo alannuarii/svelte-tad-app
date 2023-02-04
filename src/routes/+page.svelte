@@ -9,6 +9,8 @@
 	let searchTerm = '';
 	let checkMessage = '';
 
+	$: console.log(searchTerm);
+
 	$: filteredData = searchTerm
 		? tad.filter((item) => item.toLowerCase().includes(searchTerm.toLowerCase()))
 		: [];
@@ -43,6 +45,10 @@
 	<form class="position-relative" method="POST">
 		<div class="timer"><Timer /></div>
 		<div class="name position-absolute z-2 w-100">
+			<!-- svelte-ignore empty-block -->
+			{#if tad.includes(searchTerm)}{:else if searchTerm === ''}{:else}
+				<p class="text-danger">Nama tidak terdaftar!</p>
+			{/if}
 			<div class="form-floating">
 				<input
 					type="text"
@@ -83,7 +89,7 @@
 
 <style>
 	.container-fluid {
-		margin-bottom: 610px;
+		margin-bottom: 620px;
 		border: 1px solid transparent;
 	}
 	h1 {
@@ -95,13 +101,16 @@
 		margin: 35px 0px;
 	}
 	.camera {
-		margin-top: 80px;
+		margin-top: 95px;
 	}
 	.submit {
-		margin-top: 525px;
+		margin-top: 535px;
 	}
 	button {
 		font-size: 18px;
 		font-weight: 700;
+	}
+	p {
+		margin-bottom: 2px;
 	}
 </style>
