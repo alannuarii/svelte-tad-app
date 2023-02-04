@@ -86,7 +86,7 @@
 					? 'btn btn-secondary py-3 px-5 rounded-pill'
 					: 'btn btn-success py-3 px-5 rounded-pill'}
 				type="submit"
-				disabled={validation}
+				disabled={!validation}
 				>Check In</button
 			>
 		</div>
