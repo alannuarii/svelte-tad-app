@@ -8,8 +8,11 @@
 
 	let searchTerm = '';
 	let checkMessage = '';
+	let namaInput = '';
 
-	$: console.log(searchTerm);
+	const checkNama = (event) => {
+		namaInput = event.target.value;
+	};
 
 	$: filteredData = searchTerm
 		? tad.filter((item) => item.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -17,6 +20,7 @@
 
 	async function selectItem(item) {
 		searchTerm = item;
+		namaInput = item;
 		await new Promise((resolve) => setTimeout(resolve, 0));
 		filteredData = [];
 	}
@@ -46,7 +50,7 @@
 		<div class="timer"><Timer /></div>
 		<div class="name position-absolute z-2 w-100">
 			<!-- svelte-ignore empty-block -->
-			{#if tad.includes(searchTerm)}{:else if searchTerm === ''}{:else}
+			{#if tad.includes(namaInput)}{:else if namaInput === ''}{:else}
 				<p class="text-danger">Nama tidak terdaftar!</p>
 			{/if}
 			<div class="form-floating">
@@ -57,6 +61,7 @@
 					placeholder="example"
 					name="nama"
 					bind:value={searchTerm}
+					on:change={checkNama}
 				/>
 				<label for="floatingInput">Nama Tenaga Alih Daya</label>
 			</div>
