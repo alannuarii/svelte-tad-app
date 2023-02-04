@@ -4,6 +4,7 @@
 	import Bottom from './components/Bottom.svelte';
 	import { tad } from '../lib/js/nama';
 	import Geolocation from './components/Geolocation.svelte';
+	import { onMount } from 'svelte';
 
 	let searchTerm = '';
 	let checkMessage = '';
@@ -17,6 +18,19 @@
 		await new Promise((resolve) => setTimeout(resolve, 0));
 		filteredData = [];
 	}
+
+	let lat = '';
+	let lng = '';
+	const location = () => {
+		navigator.geolocation.getCurrentPosition(function (position) {
+			lat = position.coords.latitude;
+			lng = position.coords.longitude;
+		});
+	};
+
+	onMount(() => {
+		location();
+	});
 </script>
 
 <section class="container-fluid">
@@ -24,6 +38,7 @@
 		<h1>PRESENSI TAD</h1>
 		<h5 class="text-dark-emphasis">ULPLTD Kotamobagu</h5>
 		<Geolocation bind:message={checkMessage} />
+		<h6>{lat} | {lng}</h6>
 	</div>
 	<form class="position-relative" method="POST">
 		<div class="timer"><Timer /></div>

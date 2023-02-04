@@ -7,7 +7,6 @@ export const actions = {
 		formData.append('nama', data.get('nama'));
 		formData.append('waktu', data.get('waktu'));
 
-		console.log(formData);
 		const res = await fetch('http://127.0.0.1:5000/presensi', {
 			method: 'POST',
 			body: formData

@@ -1,5 +1,5 @@
 <script>
-    export let message = '';
+	export let message = '';
 	import { onMount } from 'svelte';
 	import { getDistance } from 'geolib';
 
@@ -33,4 +33,6 @@
 	});
 </script>
 
-<h6>{message}</h6>
+<h6 class={message === 'Anda berada di area PLTD Kotamobagu' ? 'text-success' : 'text-danger'}>
+	{message}
+</h6>
