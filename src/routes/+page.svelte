@@ -54,7 +54,9 @@
 		</div>
 		<div class="submit position-absolute z-1 w-100 d-flex justify-content-center">
 			<button
-				class="btn btn-success py-3 px-5 rounded-pill"
+				class={checkMessage === 'Anda berada di luar area PLTD Kotamobagu'
+					? 'btn btn-secondary py-3 px-5 rounded-pill'
+					: 'btn btn-success py-3 px-5 rounded-pill'}
 				type="submit"
 				disabled={checkMessage === 'Anda berada di luar area PLTD Kotamobagu' ? true : false}
 				>Check In</button
