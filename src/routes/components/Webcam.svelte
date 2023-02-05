@@ -5,7 +5,7 @@
 	let resetBtn = false;
 	let takeSnapshotBtn = true;
 	let isCanvasOn = false;
-	let hiddenInput;
+	export let hiddenInput = '';
 
 	async function getWebcam() {
 		mediaStream = await navigator.mediaDevices.getUserMedia({ video: true });
@@ -19,7 +19,7 @@
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(videoEl, 0, 0, canvas.width, canvas.height);
 		const imgUrl = canvas.toDataURL();
-		hiddenInput.value = imgUrl;
+		hiddenInput = imgUrl;
 		isCanvasOn = false;
 		stopWebcam();
 	}
@@ -62,7 +62,7 @@
 			height="320"
 			class="position-absolute top-50 start-50 translate-middle"
 		/>
-		<input type="hidden" name="foto" bind:this={hiddenInput} />
+		<input type="hidden" name="foto" bind:value={hiddenInput} />
 		<!-- svelte-ignore a11y-missing-attribute -->
 	</div>
 	<div class="box position-relative">

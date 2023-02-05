@@ -2,12 +2,17 @@
 	import Webcam from './components/Webcam.svelte';
 	import Timer from './components/Timer.svelte';
 	import Bottom from './components/Bottom.svelte';
+	import Alert from './components/Alert.svelte';
 	import { tad } from '../lib/js/nama';
 	import Geolocation from './components/Geolocation.svelte';
 	import { onMount } from 'svelte';
 
+	export let form;
+
 	let searchTerm = '';
 	let checkMessage = '';
+	let checkFoto = '';
+	$: foto = !!checkFoto;
 
 	$: filteredData = searchTerm
 		? tad.filter((item) => item.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -34,7 +39,10 @@
 </script>
 
 <section class="container-fluid">
-	<div class="text-center">
+	<div class="text-center position-relative">
+		{#if form !== null}
+			<Alert message={form} />
+		{/if}
 		<h1>PRESENSI TAD</h1>
 		<h5 class="text-dark-emphasis">ULPLTD Kotamobagu</h5>
 		<Geolocation bind:message={checkMessage} />
@@ -65,15 +73,15 @@
 			{/if}
 		</div>
 		<div class="camera position-absolute z-1 w-100">
-			<Webcam />
+			<Webcam bind:hiddenInput={checkFoto} />
 		</div>
 		<div class="submit position-absolute z-1 w-100 d-flex justify-content-center">
 			<button
-				class={checkMessage === 'Anda berada di luar area PLTD Kotamobagu'
-					? 'btn btn-secondary py-3 px-5 rounded-pill'
-					: 'btn btn-success py-3 px-5 rounded-pill'}
+				class={foto && checkMessage === 'Anda berada di area PLTD Kotamobagu'
+					? 'btn btn-success py-3 px-5 rounded-pill'
+					: 'btn btn-secondary py-3 px-5 rounded-pill'}
 				type="submit"
-				disabled={checkMessage === 'Anda berada di luar area PLTD Kotamobagu' ? true : false}
+				disabled={foto && checkMessage === 'Anda berada di area PLTD Kotamobagu' ? false : true}
 				>Check In</button
 			>
 		</div>

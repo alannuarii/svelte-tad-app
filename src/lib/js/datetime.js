@@ -24,3 +24,11 @@ export const waktu = (time) => {
 	const cleanedTime = time.replace(/ /g, '');
 	return `${year}-${month}-${day} ${cleanedTime}`;
 };
+
+export const tanggal = () => {
+	const datetime = new Date();
+	const year = datetime.getFullYear();
+	const month = (datetime.getMonth() + 1).toString().padStart(2, '0');
+	const day = datetime.getDate().toString().padStart(2, '0');
+	return `${year}-${month}-${day}`;
+};

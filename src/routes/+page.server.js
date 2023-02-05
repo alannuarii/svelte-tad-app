@@ -1,17 +1,27 @@
+import { redirect } from '@sveltejs/kit';
+import { tad } from '../lib/js/nama';
+
 export const actions = {
 	default: async ({ request }) => {
 		const data = await request.formData();
 
 		const formData = new FormData();
-		// formData.append('foto', data.get('foto'));
 		formData.append('nama', data.get('nama'));
 		formData.append('waktu', data.get('waktu'));
+		formData.append('foto', data.get('foto'));
 
-		const res = await fetch('http://127.0.0.1:5000/presensi', {
-			method: 'POST',
-			body: formData
-		});
+		for (const [name, value] of formData) {
+			if (tad.includes(value)) {
+				const res = await fetch('https://main.pltdktm.com/presensi', {
+					method: 'POST',
+					body: formData
+				});
 
-		return await res.json();
+				throw redirect(302, '/presensi');
+			} else {
+				const message = 'Anda belum memilih nama';
+				return message;
+			}
+		}
 	}
 };
