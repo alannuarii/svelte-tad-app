@@ -22,7 +22,7 @@
 			<div class="col">
 				<img
 					class="img-fluid"
-					src="https://main.pltdktm.com/static/uploads/presensi/{pre.foto}"
+					src="https://pltdktm.anpy.my.id/static/uploads/presensi/{pre.foto}"
 					alt=""
 				/>
 				<div class="text-center name-time bg-dark-subtle py-2">

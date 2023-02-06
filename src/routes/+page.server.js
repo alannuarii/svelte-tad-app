@@ -12,7 +12,7 @@ export const actions = {
 
 		for (const [name, value] of formData) {
 			if (tad.includes(value)) {
-				const res = await fetch('https://main.pltdktm.com/presensi', {
+				const res = await fetch('https://pltdktm.anpy.my.id/presensi', {
 					method: 'POST',
 					body: formData
 				});
