@@ -8,7 +8,7 @@ export const actions = {
 		const formData = new FormData();
 		formData.append('nama', data.get('nama'));
 		formData.append('waktu', data.get('waktu'));
-		// formData.append('foto', data.get('foto'));
+		formData.append('foto', data.get('foto'));
 
 		for (const [name, value] of formData) {
 			if (tad.includes(value)) {
