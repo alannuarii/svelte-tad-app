@@ -16,6 +16,7 @@ export const actions = {
 					method: 'POST',
 					body: formData
 				});
+				console.log(res);
 
 				throw redirect(302, '/presensi');
 			} else {
