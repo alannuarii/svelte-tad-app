@@ -81,7 +81,7 @@
 					? 'btn btn-success py-3 px-5 rounded-pill'
 					: 'btn btn-secondary py-3 px-5 rounded-pill'}
 				type="submit"
-				disabled={foto && checkMessage === 'Anda berada di area PLTD Kotamobagu' ? false : false}
+				disabled={foto && checkMessage === 'Anda berada di area PLTD Kotamobagu' ? false : true}
 				>Check In</button
 			>
 		</div>
