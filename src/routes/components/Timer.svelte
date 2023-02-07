@@ -1,8 +1,8 @@
 <script>
-	import { date, waktu } from '../../lib/js/datetime';
+	import { date, waktu, getToday } from '../../lib/js/datetime';
 
 	let time = '00:00:00';
-	let today = new Date().toISOString().slice(0, 10);
+	let today = getToday()
 
 	setInterval(() => {
 		let date = new Date();

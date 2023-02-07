@@ -1,9 +1,9 @@
 <script>
 	export let data;
-	import { date } from '../../lib/js/datetime';
+	import { date, getToday } from '../../lib/js/datetime';
 	import Bottom from '../components/Bottom.svelte';
 
-	let today = new Date().toISOString().slice(0, 10);
+	let today = getToday()
 
 	const presensi = data.data;
 </script>

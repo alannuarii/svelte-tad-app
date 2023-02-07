@@ -32,3 +32,10 @@ export const tanggal = () => {
 	const day = datetime.getDate().toString().padStart(2, '0');
 	return `${year}-${month}-${day}`;
 };
+
+export const getToday = () => {
+	let today = new Date();
+	today.setHours(today.getHours() + 8);
+	today = today.toISOString().slice(0, 10);
+	return today
+};
