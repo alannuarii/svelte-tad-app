@@ -36,11 +36,11 @@
 		const canvas = document.querySelector('canvas');
 		const ctx = canvas.getContext('2d');
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		hiddenInput.value = '';
 		getWebcam();
 		takeSnapshotBtn = true;
 		isCanvasOn = true;
 		resetBtn = false;
-		hiddenInput.value = '';
 	}
 
 	onMount(() => {
