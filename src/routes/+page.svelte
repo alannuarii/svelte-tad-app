@@ -9,6 +9,7 @@
 
 	export let form;
 
+	let loading = false;
 	let searchTerm = '';
 	let checkMessage = '';
 	let checkFoto = '';
@@ -23,6 +24,10 @@
 		await new Promise((resolve) => setTimeout(resolve, 0));
 		filteredData = [];
 	}
+
+	const clickLoading = () => {
+		loading = true;
+	};
 
 	let lat = '';
 	let lng = '';
@@ -76,14 +81,21 @@
 			<Webcam bind:hiddenInput={checkFoto} />
 		</div>
 		<div class="submit position-absolute z-1 w-100 d-flex justify-content-center">
-			<button
-				class={foto && checkMessage === 'Anda berada di area PLTD Kotamobagu'
-					? 'btn btn-success py-3 px-5 rounded-pill'
-					: 'btn btn-secondary py-3 px-5 rounded-pill'}
-				type="submit"
-				disabled={foto && checkMessage === 'Anda berada di area PLTD Kotamobagu' ? false : true}
-				>Check In</button
-			>
+			{#if loading}
+				<button class="btn btn-success py-3 px-5 rounded-pill" type="button" disabled>
+					<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" />
+					Loading...
+				</button>
+			{:else}
+				<button
+					class={foto && checkMessage === 'Anda berada di area PLTD Kotamobagu'
+						? 'btn btn-success py-3 px-5 rounded-pill'
+						: 'btn btn-secondary py-3 px-5 rounded-pill'}
+					type="submit"
+					disabled={foto && checkMessage === 'Anda berada di area PLTD Kotamobagu' ? false : true}
+					on:click={clickLoading}>Check In</button
+				>
+			{/if}
 		</div>
 	</form>
 </section>
