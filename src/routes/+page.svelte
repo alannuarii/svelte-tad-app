@@ -81,21 +81,21 @@
 			<Webcam bind:hiddenInput={checkFoto} />
 		</div>
 		<div class="submit position-absolute z-1 w-100 d-flex justify-content-center">
-			{#if loading}
-				<button class="btn btn-success py-3 px-5 rounded-pill" type="submit" disabled>
-					<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" />
-					Loading...
-				</button>
-			{:else}
-				<button
-					class={foto && checkMessage === 'Anda berada di area PLTD Kotamobagu'
-						? 'btn btn-success py-3 px-5 rounded-pill'
-						: 'btn btn-secondary py-3 px-5 rounded-pill'}
-					type="submit"
-					disabled={foto && checkMessage === 'Anda berada di area PLTD Kotamobagu' ? false : true}
-					on:click={clickLoading}>Check In</button
-				>
-			{/if}
+			<button
+				class={foto && checkMessage === 'Anda berada di area PLTD Kotamobagu'
+					? 'btn btn-success py-3 px-5 rounded-pill'
+					: 'btn btn-secondary py-3 px-5 rounded-pill'}
+				type="submit"
+				disabled={foto && checkMessage === 'Anda berada di area PLTD Kotamobagu' ? false : true}
+				on:click={clickLoading}
+			>
+				{#if loading}
+					<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" /> Loading
+					. . .
+				{:else}
+					Check In
+				{/if}
+			</button>
 		</div>
 	</form>
 </section>
