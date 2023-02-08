@@ -4,7 +4,8 @@
 	import { getDistance } from 'geolib';
 
 	let userLocation = {};
-	let targetLocation = { latitude: 0.7471286, longitude: 124.3209861 };
+	// let targetLocation = { latitude: 0.7471286, longitude: 124.3209861 };
+	let targetLocation = { latitude: 0.7336445, longitude: 124.3083848 };
 	let radius = 10;
 
 	const location = () => {
