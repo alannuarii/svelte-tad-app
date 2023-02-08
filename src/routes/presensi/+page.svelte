@@ -27,7 +27,7 @@
 				/>
 				<div class="text-center name-time bg-dark-subtle py-2">
 					<h5>{pre.nama}</h5>
-					<h6>{pre.waktu.slice(17, 25)}</h6>
+					<h6>{pre.waktu}</h6>
 				</div>
 			</div>
 		{/each}
