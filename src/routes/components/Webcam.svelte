@@ -62,7 +62,7 @@
 			height="320"
 			class="position-absolute top-50 start-50 translate-middle"
 		/>
-		<input type="hidden" name="foto" bind:value={hiddenInput} />
+		<input type="hidden" name="foto" bind:this={hiddenInput} />
 		<!-- svelte-ignore a11y-missing-attribute -->
 	</div>
 	<div class="box position-relative">
